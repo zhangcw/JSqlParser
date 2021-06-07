@@ -21,11 +21,19 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 /**
- *
  * @author aud
  */
-public class JdbcNamedParameter implements Expression {
+public class JdbcNamedParameter extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "jdbc_named_parameter";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private String name;
 

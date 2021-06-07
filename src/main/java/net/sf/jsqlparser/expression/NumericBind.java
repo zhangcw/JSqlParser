@@ -21,11 +21,21 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 /**
  *
  * @author aud
  */
-public class NumericBind implements Expression {
+public class NumericBind extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "numeric_bind";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
 
     private int bindId;
 

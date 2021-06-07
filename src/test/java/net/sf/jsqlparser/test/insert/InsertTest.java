@@ -139,17 +139,17 @@ public class InsertTest {
 
     @Test
     public void testHexValues() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("INSERT INTO TABLE2 VALUES ('1', \"DSDD\", x'EFBFBDC7AB')");
+        assertSqlCanBeParsedAndDeparsed("INSERT INTO TABLE2 VALUES ('1', `DSDD`, x'EFBFBDC7AB')");
     }
 
     @Test
     public void testHexValues2() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("INSERT INTO TABLE2 VALUES ('1', \"DSDD\", 0xEFBFBDC7AB)");
+        assertSqlCanBeParsedAndDeparsed("INSERT INTO TABLE2 VALUES ('1', `DSDD`, 0xEFBFBDC7AB)");
     }
 
     @Test
     public void testHexValues3() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("INSERT INTO TABLE2 VALUES ('1', \"DSDD\", 0xabcde)");
+        assertSqlCanBeParsedAndDeparsed("INSERT INTO TABLE2 VALUES ('1', `DSDD`, 0xabcde)");
     }
 
     @Test

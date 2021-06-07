@@ -21,12 +21,21 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 import java.math.BigInteger;
 
 /**
  * Every number without a point or an exponential format is a LongValue.
  */
-public class LongValue implements Expression {
+public class LongValue extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "long_value";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private String stringValue;
 

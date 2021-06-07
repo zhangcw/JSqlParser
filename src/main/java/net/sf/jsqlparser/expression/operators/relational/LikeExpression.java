@@ -26,9 +26,17 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class LikeExpression extends BinaryExpression {
 
+    private final String expressionType = "like_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     private boolean not = false;
     private String escape = null;
     private boolean caseInsensitive = false;
+    private boolean regexLike = false;
 
     @Override
     public boolean isNot() {
@@ -46,7 +54,7 @@ public class LikeExpression extends BinaryExpression {
 
     @Override
     public String getStringExpression() {
-        return (not ? "NOT " : "") + (caseInsensitive ? "ILIKE" : "LIKE");
+        return (not ? "NOT " : "") + (caseInsensitive ? "ILIKE" : regexLike ? "RLIKE" : "LIKE");
     }
 
     @Override
@@ -73,5 +81,13 @@ public class LikeExpression extends BinaryExpression {
 
     public void setCaseInsensitive(boolean caseInsensitive) {
         this.caseInsensitive = caseInsensitive;
+    }
+
+    public boolean isRegexLike() {
+        return regexLike;
+    }
+
+    public void setRegexLike(boolean regexLike) {
+        this.regexLike = regexLike;
     }
 }

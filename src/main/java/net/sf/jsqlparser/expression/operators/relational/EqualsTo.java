@@ -25,8 +25,19 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class EqualsTo extends ComparisonOperator {
 
+    private final String expressionType = "equals_to";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     public EqualsTo() {
         super("=");
+    }
+
+    public EqualsTo(String operator) {
+        super(operator);
     }
 
     @Override

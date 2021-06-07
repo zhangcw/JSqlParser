@@ -31,6 +31,12 @@ import net.sf.jsqlparser.expression.Expression;
  *
  */
 public final class MultiAndExpression extends MultipleExpression {
+    private final String expressionType = "multi_and_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     public MultiAndExpression(List<Expression> childlist) {
         super(childlist);

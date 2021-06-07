@@ -80,10 +80,10 @@ public class CreateViewDeParserTest {
                     }
                 }
                 if (tableName != null && !tableName.isEmpty()) {
-                    getBuffer().append("\"").append(tableName).append("\"").append(".");
+                    getBuffer().append("`").append(tableName).append("`").append(".");
                 }
 
-                getBuffer().append("\"").append(tableColumn.getColumnName()).append("\"");
+                getBuffer().append("`").append(tableColumn.getColumnName()).append("`");
             }
         };
 
@@ -95,7 +95,7 @@ public class CreateViewDeParserTest {
         instance.deParse(vc);
 
         assertEquals("CREATE VIEW test AS SELECT a, b FROM mytable", vc.toString());
-        assertEquals("CREATE VIEW test AS SELECT \"a\", \"b\" FROM mytable", instance.getBuffer().
+        assertEquals("CREATE VIEW test AS SELECT `a`, `b` FROM mytable", instance.getBuffer().
                 toString());
     }
 
@@ -113,15 +113,15 @@ public class CreateViewDeParserTest {
             @Override
             public Object visit(SimpleNode node, Object data) {
                 if (CCJSqlParserTreeConstants.JJTCOLUMN == node.getId()) {
-                    b.insert(node.jjtGetFirstToken().beginColumn - 1 + idxDelta, '"');
+                    b.insert(node.jjtGetFirstToken().beginColumn - 1 + idxDelta, '`');
                     idxDelta++;
-                    b.insert(node.jjtGetLastToken().endColumn + idxDelta, '"');
+                    b.insert(node.jjtGetLastToken().endColumn + idxDelta, '`');
                     idxDelta++;
                 }
                 return super.visit(node, data);
             }
         }, null);
 
-        assertEquals("CREATE VIEW test AS SELECT \"a\", \"b\" FROM mytable", b.toString());
+        assertEquals("CREATE VIEW test AS SELECT `a`, `b` FROM mytable", b.toString());
     }
 }

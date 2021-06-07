@@ -29,6 +29,14 @@ import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
  */
 public final class Column extends ASTNodeAccessImpl implements Expression, MultiPartName {
 
+
+    private final String expressionType = "column";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     private Table table;
     private String columnName;
 

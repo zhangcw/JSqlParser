@@ -26,6 +26,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class RegExpMatchOperator extends BinaryExpression {
 
+    private final String expressionType = "reg_exp_match_operator";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     private RegExpMatchOperatorType operatorType;
 
     public RegExpMatchOperator(RegExpMatchOperatorType operatorType) {

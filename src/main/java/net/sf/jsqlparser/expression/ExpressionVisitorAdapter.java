@@ -350,6 +350,16 @@ public class ExpressionVisitorAdapter implements ExpressionVisitor, ItemsListVis
         notExpr.getExpression().accept(this);
     }
 
+    @Override
+    public void visit(KWArg kwArg) {
+        kwArg.getValueExpression().accept(this);
+    }
+
+    @Override
+    public void visit(BooleanValue booleanValue) {
+
+    }
+
     protected void visitBinaryExpression(BinaryExpression expr) {
         expr.getLeftExpression().accept(this);
         expr.getRightExpression().accept(this);

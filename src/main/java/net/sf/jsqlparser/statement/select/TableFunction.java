@@ -23,6 +23,8 @@ package net.sf.jsqlparser.statement.select;
 
 public class TableFunction extends FunctionItem implements FromItem {
 
+    private boolean literal = false;
+
     @Override
     public void accept(FromItemVisitor fromItemVisitor) {
         fromItemVisitor.visit(this);
@@ -35,5 +37,21 @@ public class TableFunction extends FunctionItem implements FromItem {
 
     @Override
     public void setPivot(Pivot pivot) {
+    }
+
+    public void setLiteral(boolean literal) {
+        this.literal = literal;
+    }
+
+    public boolean isLiteral() {
+        return literal;
+    }
+
+    @Override
+    public String toString() {
+        if (literal) {
+            return "LATERAL TABLE (" + getFunction() + ")"  + ((getAlias() != null) ? getAlias().toString() : "");
+        }
+        return super.toString();
     }
 }

@@ -26,6 +26,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class Division extends BinaryExpression {
 
+    private final String expressionType = "division";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     @Override
     public void accept(ExpressionVisitor expressionVisitor) {
         expressionVisitor.visit(this);

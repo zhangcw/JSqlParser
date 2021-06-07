@@ -23,13 +23,20 @@ package net.sf.jsqlparser.expression;
 
 import java.util.List;
 import net.sf.jsqlparser.expression.operators.relational.ExpressionList;
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 import net.sf.jsqlparser.statement.select.OrderByElement;
 
 /**
- *
  * @author toben
  */
-public class WithinGroupExpression implements Expression {
+public class WithinGroupExpression extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "within_group_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private String name;
 

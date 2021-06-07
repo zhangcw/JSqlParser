@@ -29,6 +29,13 @@ import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
  */
 public class Function extends ASTNodeAccessImpl implements Expression {
 
+    private final String expressionType = "function";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     private String name;
     private ExpressionList parameters;
     private boolean allColumns = false;

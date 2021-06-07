@@ -1,7 +1,7 @@
 select deptno
      ,      cast(
                collect(
-                  distinct job
+                  DISTINCT job
                   order by job
                   ) as varchar2_ntt) as distinct_ordered_jobs
      from   emp

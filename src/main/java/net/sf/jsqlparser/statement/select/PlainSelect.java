@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.schema.Table;
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +35,7 @@ import net.sf.jsqlparser.expression.OracleHint;
 /**
  * The core of a "SELECT" statement (no UNION, no ORDER BY)
  */
-public class PlainSelect implements SelectBody {
+public class PlainSelect extends ASTNodeAccessImpl implements SelectBody {
 
     private Distinct distinct = null;
     private List<SelectItem> selectItems;

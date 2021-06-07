@@ -25,6 +25,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class GreaterThan extends ComparisonOperator {
 
+    private final String expressionType = "greater_than";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     public GreaterThan() {
         super(">");
     }

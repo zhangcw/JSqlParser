@@ -25,6 +25,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class MinorThan extends ComparisonOperator {
 
+    private final String expressionType = "minor_than";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     public MinorThan() {
         super("<");
     }

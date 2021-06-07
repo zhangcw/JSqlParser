@@ -24,9 +24,11 @@ package net.sf.jsqlparser.statement.select;
 /**
  * All the columns of a table (as in "SELECT TableName.* FROM ...")
  */
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 import net.sf.jsqlparser.schema.*;
 
-public class AllTableColumns implements SelectItem {
+public class AllTableColumns extends ASTNodeAccessImpl implements SelectItem {
+    private final String type = "all_table_columns";
 
     private Table table;
 
@@ -48,6 +50,11 @@ public class AllTableColumns implements SelectItem {
     @Override
     public void accept(SelectItemVisitor selectItemVisitor) {
         selectItemVisitor.visit(this);
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 
     @Override

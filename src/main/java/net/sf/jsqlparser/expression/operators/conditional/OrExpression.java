@@ -27,6 +27,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class OrExpression extends BinaryExpression {
 
+    private final String expressionType = "or_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     public OrExpression(Expression leftExpression, Expression rightExpression) {
         setLeftExpression(leftExpression);
         setRightExpression(rightExpression);

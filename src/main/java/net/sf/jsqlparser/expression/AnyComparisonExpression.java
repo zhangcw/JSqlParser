@@ -21,6 +21,7 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 import net.sf.jsqlparser.statement.select.SubSelect;
 
 /**
@@ -28,7 +29,14 @@ import net.sf.jsqlparser.statement.select.SubSelect;
  *
  * @author toben
  */
-public class AnyComparisonExpression implements Expression {
+public class AnyComparisonExpression extends ASTNodeAccessImpl implements Expression {
+    private final String expressionType = "any_comparison_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
 
     private final SubSelect subSelect;
     private final AnyType anyType;

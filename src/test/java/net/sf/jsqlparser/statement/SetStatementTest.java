@@ -58,7 +58,7 @@ public class SetStatementTest {
 
     @Test
     public void testIssue373() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("SET deferred_name_resolution true");
+        assertSqlCanBeParsedAndDeparsed("SET deferred_name_resolution TRUE");
     }
 
     @Test

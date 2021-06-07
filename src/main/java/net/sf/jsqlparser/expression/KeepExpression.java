@@ -21,6 +21,7 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 import net.sf.jsqlparser.statement.select.OrderByElement;
 
 import java.util.List;
@@ -33,7 +34,14 @@ import java.util.List;
  *
  * @author tw
  */
-public class KeepExpression implements Expression {
+public class KeepExpression extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "keep_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private String name;
     private List<OrderByElement> orderByElements;

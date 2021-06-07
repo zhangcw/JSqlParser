@@ -21,10 +21,21 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 /**
  * It represents an expression like "(" expression ")"
  */
-public class Parenthesis implements Expression {
+public class Parenthesis extends ASTNodeAccessImpl implements Expression {
+
+
+    private final String expressionType = "parenthesis";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
 
     private Expression expression;
     private boolean not = false;

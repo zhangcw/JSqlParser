@@ -1,4 +1,4 @@
-select distinct X
+select DISTINCT X
 from X,Y,Z
 where
     X.id = Z.id (+) 

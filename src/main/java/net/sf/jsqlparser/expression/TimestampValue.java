@@ -21,12 +21,21 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 import java.sql.Timestamp;
 
 /**
  * A Timestamp in the form {ts 'yyyy-mm-dd hh:mm:ss.f . . .'}
  */
-public class TimestampValue implements Expression {
+public class TimestampValue extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "timestamp_value";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private Timestamp value;
 

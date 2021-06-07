@@ -21,10 +21,19 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 /**
  * Every number with a point or a exponential format is a DoubleValue
  */
-public class HexValue implements Expression {
+public class HexValue extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "hex_value";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private String stringValue;
 

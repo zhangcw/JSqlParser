@@ -65,6 +65,14 @@ public final class Server implements MultiPartName {
         this.instanceName = instanceName;
     }
 
+    public String getSimpleName() {
+        return simpleName;
+    }
+
+    public void setSimpleName(String simpleName) {
+        this.simpleName = simpleName;
+    }
+
     @Override
     public String getFullyQualifiedName() {
         if (serverName != null && !serverName.isEmpty() && instanceName != null && !instanceName.

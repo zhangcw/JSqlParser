@@ -21,12 +21,21 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 import java.sql.Time;
 
 /**
  * A Time in the form {t 'hh:mm:ss'}
  */
-public class TimeValue implements Expression {
+public class TimeValue extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "time_value";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private Time value;
 

@@ -23,11 +23,13 @@ package net.sf.jsqlparser.statement.select;
 
 import net.sf.jsqlparser.expression.Alias;
 import net.sf.jsqlparser.expression.Expression;
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 
 /**
  * An expression as in "SELECT expr1 AS EXPR"
  */
-public class SelectExpressionItem implements SelectItem {
+public class SelectExpressionItem extends ASTNodeAccessImpl implements SelectItem {
+    private final String type = "select_expr_item";
 
     private Expression expression;
     private Alias alias;
@@ -58,6 +60,11 @@ public class SelectExpressionItem implements SelectItem {
     @Override
     public void accept(SelectItemVisitor selectItemVisitor) {
         selectItemVisitor.visit(this);
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 
     @Override

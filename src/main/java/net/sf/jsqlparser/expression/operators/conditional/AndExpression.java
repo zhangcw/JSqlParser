@@ -27,6 +27,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class AndExpression extends BinaryExpression {
 
+    private final String type = "and_expression";
+
+    @Override
+    public String getExpressionType() {
+        return type;
+    }
+
     public AndExpression(Expression leftExpression, Expression rightExpression) {
         setLeftExpression(leftExpression);
         setRightExpression(rightExpression);

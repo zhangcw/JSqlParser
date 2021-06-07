@@ -26,6 +26,12 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class Concat extends BinaryExpression {
 
+    private final String expressionType = "concat";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
     @Override
     public void accept(ExpressionVisitor expressionVisitor) {
         expressionVisitor.visit(this);

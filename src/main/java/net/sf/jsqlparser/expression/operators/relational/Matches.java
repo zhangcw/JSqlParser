@@ -25,6 +25,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class Matches extends OldOracleJoinBinaryExpression {
 
+    private final String expressionType = "matches";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     @Override
     public void accept(ExpressionVisitor expressionVisitor) {
         expressionVisitor.visit(this);

@@ -64,6 +64,7 @@ public class SpecialOracleTest {
                     success++;
                     LOG.info("   -> SUCCESS");
                 } catch (JSQLParserException ex) {
+                    System.err.println(file);
                     //LOG.log(Level.SEVERE, null, ex);
                     LOG.log(Level.INFO, "   -> PROBLEM {0}", ex.toString());
                 } catch (TokenMgrError ex) {

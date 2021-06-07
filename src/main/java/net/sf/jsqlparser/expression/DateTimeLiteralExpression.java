@@ -39,11 +39,20 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 /**
  *
  * @author toben
  */
-public class DateTimeLiteralExpression implements Expression {
+public class DateTimeLiteralExpression extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "date_time_literal_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private String value;
     private DateTime type;

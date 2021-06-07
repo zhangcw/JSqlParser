@@ -26,6 +26,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class JsonOperator extends BinaryExpression {
 
+    private final String expressionType = "json_operator";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     private String op; //"@>"
 
     public JsonOperator(String op) {

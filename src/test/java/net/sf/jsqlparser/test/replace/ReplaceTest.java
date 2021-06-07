@@ -74,6 +74,6 @@ public class ReplaceTest {
     @Test
     public void testProblemMissingIntoIssue389() throws JSQLParserException {
         TestUtils.
-                assertSqlCanBeParsedAndDeparsed("REPLACE INTO mytable (key, data) VALUES (1, \"aaa\")");
+                assertSqlCanBeParsedAndDeparsed("REPLACE INTO mytable (key, data) VALUES (1, `aaa`)");
     }
 }

@@ -172,6 +172,9 @@ public interface ExpressionVisitor {
 
     void visit(DateTimeLiteralExpression literal);
 
-    public void visit(NotExpression aThis);
+    void visit(NotExpression aThis);
 
+    void visit(KWArg kwArg);
+
+    void visit(BooleanValue booleanValue);
 }

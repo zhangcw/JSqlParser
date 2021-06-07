@@ -31,9 +31,9 @@ public class DropTest {
 
     @Test
     public void testDrop2() throws JSQLParserException {
-        Drop drop = (Drop) parserManager.parse(new StringReader("DROP TABLE \"testtable\""));
+        Drop drop = (Drop) parserManager.parse(new StringReader("DROP TABLE `testtable`"));
         assertEquals("TABLE", drop.getType());
-        assertEquals("\"testtable\"", drop.getName().getFullyQualifiedName());
+        assertEquals("`testtable`", drop.getName().getFullyQualifiedName());
     }
 
     @Test

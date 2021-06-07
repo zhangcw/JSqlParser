@@ -31,6 +31,12 @@ import net.sf.jsqlparser.expression.Expression;
  *
  */
 public final class MultiOrExpression extends MultipleExpression {
+    private final String expressionType = "multi_or_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     public MultiOrExpression(List<Expression> childlist) {
         super(childlist);

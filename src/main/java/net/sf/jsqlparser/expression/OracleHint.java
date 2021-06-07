@@ -21,6 +21,8 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,7 +31,14 @@ import java.util.regex.Pattern;
  *
  * @author valdo
  */
-public class OracleHint implements Expression {
+public class OracleHint extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "oracle_hint";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private static final Pattern SINGLE_LINE = Pattern.compile("--\\+ *([^ ].*[^ ])");
     private static final Pattern MULTI_LINE = Pattern.

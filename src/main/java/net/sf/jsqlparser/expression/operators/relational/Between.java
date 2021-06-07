@@ -23,11 +23,18 @@ package net.sf.jsqlparser.expression.operators.relational;
 
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.ExpressionVisitor;
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 
 /**
  * A "BETWEEN" expr1 expr2 statement
  */
-public class Between implements Expression {
+public class Between extends ASTNodeAccessImpl implements Expression {
+    private final String expressionType = "between";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private Expression leftExpression;
     private boolean not = false;

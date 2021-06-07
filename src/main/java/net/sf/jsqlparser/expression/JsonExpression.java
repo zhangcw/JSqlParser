@@ -23,13 +23,22 @@ package net.sf.jsqlparser.expression;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 import net.sf.jsqlparser.schema.Column;
 
 /**
  *
  * @author toben
  */
-public class JsonExpression implements Expression {
+public class JsonExpression extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "json_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private Column column;
 

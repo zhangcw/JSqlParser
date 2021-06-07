@@ -21,11 +21,20 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 /**
  *
  * @author wumpz
  */
-public class IntervalExpression implements Expression {
+public class IntervalExpression extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "interval_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private String parameter = null;
     private String intervalType = null;

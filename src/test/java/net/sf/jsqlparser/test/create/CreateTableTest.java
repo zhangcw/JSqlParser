@@ -27,12 +27,12 @@ public class CreateTableTest extends TestCase {
     }
 
     public void testCreateTable2() throws JSQLParserException {
-        String statement = "CREATE TABLE testtab (\"test\" varchar (255))";
+        String statement = "CREATE TABLE testtab (`test` varchar (255))";
         assertSqlCanBeParsedAndDeparsed(statement);
     }
 
     public void testCreateTable3() throws JSQLParserException {
-        String statement = "CREATE TABLE testtab (\"test\" varchar (255), \"test2\" varchar (255))";
+        String statement = "CREATE TABLE testtab (`test` varchar (255), `test2` varchar (255))";
         assertSqlCanBeParsedAndDeparsed(statement);
     }
 
@@ -213,11 +213,11 @@ public class CreateTableTest extends TestCase {
     }
 
     public void testCreateTableWithTablespaceIssue247() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("CREATE TABLE TABLE1 (COLUMN1 VARCHAR2 (15), COLUMN2 VARCHAR2 (15), CONSTRAINT P_PK PRIMARY KEY (COLUMN1) USING INDEX TABLESPACE \"T_INDEX\") TABLESPACE \"T_SPACE\"");
+        assertSqlCanBeParsedAndDeparsed("CREATE TABLE TABLE1 (COLUMN1 VARCHAR2 (15), COLUMN2 VARCHAR2 (15), CONSTRAINT P_PK PRIMARY KEY (COLUMN1) USING INDEX TABLESPACE `T_INDEX`) TABLESPACE `T_SPACE`");
     }
 
     public void testCreateTableWithTablespaceIssue247_1() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("CREATE TABLE TABLE1 (COLUMN1 VARCHAR2 (15), COLUMN2 VARCHAR2 (15), CONSTRAINT P_PK PRIMARY KEY (COLUMN1) USING INDEX TABLESPACE \"T_INDEX\")");
+        assertSqlCanBeParsedAndDeparsed("CREATE TABLE TABLE1 (COLUMN1 VARCHAR2 (15), COLUMN2 VARCHAR2 (15), CONSTRAINT P_PK PRIMARY KEY (COLUMN1) USING INDEX TABLESPACE `T_INDEX`)");
     }
 
     public void testOnDeleteSetNull() throws JSQLParserException {
@@ -254,15 +254,6 @@ public class CreateTableTest extends TestCase {
 
     public void testCreateUnitonIssue402_2() throws JSQLParserException {
         assertSqlCanBeParsedAndDeparsed("CREATE TABLE temp.abc AS (SELECT sku FROM temp.a UNION SELECT sku FROM temp.b)");
-    }
-    
-    public void testTimestampWithTimezone() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("CREATE TABLE country_region (" +
-                "regionid BIGINT NOT NULL CONSTRAINT pk_auth_region PRIMARY KEY, " +
-                "region_name VARCHAR (100) NOT NULL, " +
-                "creation_date TIMESTAMP (0) WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP (0) NOT NULL, " +
-                "last_change_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP (0), " +
-                "CONSTRAINT region_name_unique UNIQUE (region_name))");
     }
 
     public void testRUBiSCreateList() throws Exception {

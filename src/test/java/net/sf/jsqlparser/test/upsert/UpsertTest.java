@@ -140,17 +140,17 @@ public class UpsertTest {
 
     @Test
     public void testHexValues() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("UPSERT INTO TABLE2 VALUES ('1', \"DSDD\", x'EFBFBDC7AB')");
+        assertSqlCanBeParsedAndDeparsed("UPSERT INTO TABLE2 VALUES ('1', `DSDD`, x'EFBFBDC7AB')");
     }
 
     @Test
     public void testHexValues2() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("UPSERT INTO TABLE2 VALUES ('1', \"DSDD\", 0xEFBFBDC7AB)");
+        assertSqlCanBeParsedAndDeparsed("UPSERT INTO TABLE2 VALUES ('1', `DSDD`, 0xEFBFBDC7AB)");
     }
 
     @Test
     public void testHexValues3() throws JSQLParserException {
-        assertSqlCanBeParsedAndDeparsed("UPSERT INTO TABLE2 VALUES ('1', \"DSDD\", 0xabcde)");
+        assertSqlCanBeParsedAndDeparsed("UPSERT INTO TABLE2 VALUES ('1', `DSDD`, 0xabcde)");
     }
 
     @Test

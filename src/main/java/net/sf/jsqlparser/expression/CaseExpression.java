@@ -23,6 +23,7 @@ package net.sf.jsqlparser.expression;
 
 import java.util.List;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
 import net.sf.jsqlparser.statement.select.PlainSelect;
 
 /**
@@ -56,7 +57,14 @@ import net.sf.jsqlparser.statement.select.PlainSelect;
  *
  * @author Havard Rast Blok
  */
-public class CaseExpression implements Expression {
+public class CaseExpression extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "case_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private Expression switchExpression;
     private List<Expression> whenClauses;

@@ -26,6 +26,14 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class Multiplication extends BinaryExpression {
 
+
+    private final String expressionType = "multiplication";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     @Override
     public void accept(ExpressionVisitor expressionVisitor) {
         expressionVisitor.visit(this);

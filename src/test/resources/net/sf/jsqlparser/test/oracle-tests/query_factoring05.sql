@@ -4,7 +4,7 @@ x2 as (select max(y2) from klm2),
 x3 as (select max(y3) from klm3),
 x4 as (select max(y4) from klm4)
 select
- distinct
+ DISTINCT
  -1,
  +1,
  a + b * (a * d) as aaa,

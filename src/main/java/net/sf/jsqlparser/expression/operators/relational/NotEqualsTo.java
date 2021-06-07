@@ -25,6 +25,13 @@ import net.sf.jsqlparser.expression.ExpressionVisitor;
 
 public class NotEqualsTo extends ComparisonOperator {
 
+    private final String expressionType = "not_equals_to";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
+
     public NotEqualsTo() {
         super("<>");
     }

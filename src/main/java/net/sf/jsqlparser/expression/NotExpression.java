@@ -21,10 +21,19 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 /**
  * It represents a "-" or "+" before an expression
  */
-public class NotExpression implements Expression {
+public class NotExpression extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "not_expression";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private Expression expression;
 

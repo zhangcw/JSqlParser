@@ -39,6 +39,7 @@ public class JSQLParserException extends Exception {
     }
 
     public JSQLParserException(Throwable arg0) {
+        super(arg0.getMessage());
         this.cause = arg0;
     }
 

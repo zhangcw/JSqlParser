@@ -1,6 +1,6 @@
 select deptno
      ,      cast(
-               collect(distinct job)
+               collect(DISTINCT job)
                   as varchar2_ntt) as distinct_jobs
      from   emp
      group  by

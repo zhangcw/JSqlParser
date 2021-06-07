@@ -21,12 +21,21 @@
  */
 package net.sf.jsqlparser.expression;
 
+import net.sf.jsqlparser.parser.ASTNodeAccessImpl;
+
 import java.sql.Date;
 
 /**
  * A Date in the form {d 'yyyy-mm-dd'}
  */
-public class DateValue implements Expression {
+public class DateValue extends ASTNodeAccessImpl implements Expression {
+
+    private final String expressionType = "date_value";
+
+    @Override
+    public String getExpressionType() {
+        return expressionType;
+    }
 
     private Date value;
 
