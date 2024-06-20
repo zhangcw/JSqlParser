@@ -206,6 +206,7 @@ TOKEN: /* SQL Keywords. prefixed with K_ to avoid name clashes */
 |   <K_DISTINCT:"DISTINCT">
 |   <K_INTERSECT:"INTERSECT">
 |   <K_CAST:"CAST">
+|   <K_TRY_CAST: "TRY_CAST">
 |   <K_EXCEPT:"EXCEPT">
 |   <K_MINUS:"MINUS">
 |   <K_OVER:"OVER">
@@ -887,7 +888,7 @@ String RelObjectName() :
 {    Token tk = null; }
 {
     (tk=<S_IDENTIFIER> | tk=<S_QUOTED_IDENTIFIER>
-      | tk=<K_CAST> | tk=<K_DO> | tk=<K_EXTRACT> | tk=<K_FIRST> | tk=<K_FOLLOWING> 
+      | tk=<K_CAST> | tk=<K_TRY_CAST> | tk=<K_DO> | tk=<K_EXTRACT> | tk=<K_FIRST> | tk=<K_FOLLOWING>
       | tk=<K_LAST> | tk=<K_MATERIALIZED> | tk=<K_NULLS> | tk=<K_PARTITION> | tk=<K_RANGE> 
       | tk=<K_ROW> | tk=<K_ROWS> | tk=<K_SIBLINGS> | tk=<K_VALUE> | tk=<K_XML>
       | tk=<K_COLUMN> | tk=<K_REPLACE> | tk=<K_TRUNCATE> | tk=<K_KEY> | tk=<K_ANY>
@@ -2644,14 +2645,26 @@ ExtractExpression ExtractExpression() :
 
 CastExpression CastExpression():
 {
-    CastExpression retval = new CastExpression();
+    Token keyword;
+    CastExpression retval;
     ColDataType type = null;
     Expression expression = null;
     boolean    useCastKeyword;
 }
 {
-    <K_CAST> "(" expression=SimpleExpression() <K_AS> type=ColDataType() ")" { retval.setUseCastKeyword(true); }
+    (
+        keyword=<K_CAST>
+        |
+        keyword=<K_TRY_CAST>
+    )
+    {
+        retval = new CastExpression(keyword.image);
+    }
 
+    "("
+    expression=SimpleExpression()
+    <K_AS> type=ColDataType() ")"
+    { retval.setUseCastKeyword(true); }
     {
         retval.setLeftExpression(expression);
         retval.setType(type);

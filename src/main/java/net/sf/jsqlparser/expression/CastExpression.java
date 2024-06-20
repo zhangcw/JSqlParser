@@ -32,6 +32,8 @@ public class CastExpression extends ASTNodeAccessImpl implements Expression {
 
     private final String expressionType = "cast_expression";
 
+    public String keyword;
+
     @Override
     public String getExpressionType() {
         return expressionType;
@@ -40,6 +42,14 @@ public class CastExpression extends ASTNodeAccessImpl implements Expression {
     private Expression leftExpression;
     private ColDataType type;
     private boolean useCastKeyword = true;
+
+    public CastExpression(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public CastExpression() {
+        this("CAST");
+    }
 
     public ColDataType getType() {
         return type;
@@ -73,7 +83,7 @@ public class CastExpression extends ASTNodeAccessImpl implements Expression {
     @Override
     public String toString() {
         if (useCastKeyword) {
-            return "CAST(" + leftExpression + " AS " + type.toString() + ")";
+            return keyword + "(" + leftExpression + " AS " + type.toString() + ")";
         } else {
             return leftExpression + "::" + type.toString();
         }
